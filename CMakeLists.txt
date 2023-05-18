@@ -30,6 +30,9 @@ add_executable(test_iterative_decomp test/test_iterative_decomp.cpp)
 target_link_libraries(test_iterative_decomp ${Boost_LIBRARIES})
 add_test(test_iterative_decomp test_iterative_decomp ${CMAKE_SOURCE_DIR}/data/obstacles.txt)
 
+add_subdirectory(pybind11)
+pybind11_add_module(py_seed_decomp python_api/pybind_decomp.cpp
+
 install(FILES "${PROJECT_NAME}Config.cmake" "${PROJECT_NAME}ConfigVersion.cmake"
   DESTINATION "share/${PROJECT_NAME}/cmake")
 
