@@ -9,6 +9,12 @@ using namespace std;
 PYBIND11_MODULE(py_seed_decomp, m) {
     m.doc() = "pybind seed decomp"; // optional module docstring
 
+    py::class_<DecompRet>(m, "DecompRet")
+        .def(py::init())
+        .def("getAb", &DecompRet::get_Ab)
+        .def("getArea", &DecompRet::get_area)
+        .def("getVertices", &DecompRet::get_vertices);
+
     m.def("seed_decomp", &seed_decomp, "A function which finds the convex safe set in a point cloud",
-      py::arg("x"), py::arg("y"), py::arg("obs_input"), py::return_value_policy::automatic);
+      py::arg("x"), py::arg("y"), py::arg("obs_input"), py::return_value_policy::reference);
 }
