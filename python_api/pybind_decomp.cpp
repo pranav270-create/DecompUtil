@@ -16,5 +16,5 @@ PYBIND11_MODULE(py_seed_decomp, m) {
         .def("getVertices", &DecompRet::get_vertices);
 
     m.def("seed_decomp", &seed_decomp, "A function which finds the convex safe set in a point cloud",
-      py::arg("x"), py::arg("y"), py::arg("obs_input"), py::return_value_policy::reference);
+      py::arg("x"), py::arg("y"), py::arg("obs_input"), py::arg("local_bbox"), py::return_value_policy::reference);
 }

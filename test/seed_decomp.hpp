@@ -46,7 +46,7 @@ class DecompRet {
     double get_area() const { return area_; }
 };
 
-DecompRet seed_decomp(float x, float y, std::vector<vector<double>> obs_input) {
+DecompRet seed_decomp(float x, float y, std::vector<vector<double>> obs_input, float local_bbox) {
   // Obstacles
   vec_Vec2f obs;
   for (unsigned int i = 0; i < obs_input.size(); ++i){
@@ -59,7 +59,7 @@ DecompRet seed_decomp(float x, float y, std::vector<vector<double>> obs_input) {
   // Initialize SeedDecomp2D
   SeedDecomp2D decomp(pos);
   decomp.set_obs(obs);
-  decomp.set_local_bbox(Vec2f(1, 1));
+  decomp.set_local_bbox(Vec2f(local_bbox, local_bbox));
   decomp.dilate(.01);
   // Get the result
   auto poly = decomp.get_polyhedron();
